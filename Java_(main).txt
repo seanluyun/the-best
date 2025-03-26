@@ -1,0 +1,77 @@
+Athlete.java:
+------------
+class Athlete
+{
+
+        protected String name;
+        protected String sport;
+        protected int age;
+        protected String team; 
+        protected int trainingHours;
+        public Athlete(String name, String sport, int age, String team, int trainingHours) {
+            this.name = name;
+            this.sport = sport;
+            this.age = age;
+            this.team = team;
+            this.trainingHours = trainingHours;
+        }
+        public void train() {
+            System.out.println(name + " is training for " + trainingHours + " hours.");
+        }
+        public void compete() {
+            System.out.println(name + " is competing in " + sport + ".");
+        }
+        public String getStats() {
+            return "Athlete: " + name + " | Sport " + sport + " | Age: " + age + " | Team: " + team + " | Training Hours: " + trainingHours;
+        }
+        @Override
+        public String toString() {
+            return getStats();
+    }
+}
+
+BasketballPlayer.java:
+---------------------
+ class BasketballPlayer extends Athlete{
+   private String position;
+    
+    public BasketballPlayer(String name, int age, String team, int trainingHours, String position) {
+        super(name, "Basketball", age, team, trainingHours);
+        this.position = position;
+    }
+    @Override
+    public String getStats() {
+        return super.getStats() + " | Position: " + position;
+    }
+}
+
+FootballPlayer.java:
+-------------------
+ class FootballPlayer extends Athlete{
+  private String position;
+ public FootballPlayer(String name, int age, String team, int trainingHours, String position) {
+     super(name, "Football", age, team, trainingHours);
+     this.position = position;
+}
+@Override
+public String getStats() {
+    return super.getStats() + " | Position: " + position; 
+}
+}
+
+SportsManagement.java:
+---------------------
+ class SportsManagement {
+    public static void main(String[] args) {
+        BasketballPlayer player1 = new BasketballPlayer("Daniel Gafford", 26, "Mavericks", 7, "Center");
+        FootballPlayer player2 = new FootballPlayer("Jalen Coker", 24, "Panthers", 6, "Cornerback");
+        player1.train();
+        player1.compete();
+        System.out.println(player1.getStats());
+        System.out.println();
+        player2.train();
+        player2.compete();
+        System.out.println(player2.getStats());
+    }
+}
+
